@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: GPL-2.0-only
+config ARCH_TISOC
+	bool "TI-SoCs (tisoc) Cortex-A8 support"
+	depends on ARCH_MULTI_V7
+	help
+	  Support for the TI-SoCs family based on Cortex-A8.
+      
