@@ -1,0 +1,26 @@
+# SPDX-License-Identifier: GPL-2.0
+%YAML 1.2
+---
+$id: http://devicetree.org/schemas/arm/ti/ti,tisoc.yaml#
+$schema: http://devicetree.org/meta-schemas/core.yaml#
+
+title: TI-SoCs (tisoc) based platforms
+
+maintainers:
+  - Nhat Tran <nhat.tranminhk2@gmail.com>
+
+description:
+  Boards based on the TI-SoCs family, a Cortex-A8 SoC.
+
+properties:
+  $nodename:
+    const: '/'
+  compatible:
+    items:
+      - enum:
+          - ti,tisoc-bbb    # TI-SoCs based BeagleBone Black board
+      - const: ti,tisoc
+
+additionalProperties: true
+
+...
