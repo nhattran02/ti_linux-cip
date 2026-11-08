@@ -1,0 +1,52 @@
+// SPDX-License-Identifier: GPL-2.0-or-later
+/*
+ * DTS include file for TI-SoCs
+ *
+ * Copyright 2026 Nhat Tran <nhat.tranminhk2@gmail.com>
+ */
+
+/ {
+	interrupt-parent = <&intc>;
+	#address-cells = <1>;
+	#size-cells = <1>;
+
+	cpus {
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		cpu@0 {
+			compatible = "arm,cortex-a8";
+			device_type = "cpu";
+			reg = <0>;
+		};
+	};
+
+	clk_48m: clock-48m {
+		compatible = "fixed-clock";
+		#clock-cells = <0>;
+		clock-frequency = <48000000>;
+	};
+
+	soc {
+		compatible = "simple-bus";
+		#address-cells = <1>;
+		#size-cells = <1>;
+		ranges;
+
+		intc: interrupt-controller@48200000 {
+			compatible = "ti,tisoc-intc";
+			reg = <0x48200000 0x1000>;
+			interrupt-controller;
+			#interrupt-cells = <1>;
+		};
+
+		uart0: serial@44e09000 {
+			compatible = "ti,tisoc-uart";
+			reg = <0x44e09000 0x1000>;
+			clocks = <&clk_48m>;
+			interrupts = <72>;
+			status = "disabled";
+		};
+	};
+};
+

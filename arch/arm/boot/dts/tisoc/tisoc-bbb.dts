@@ -1,0 +1,32 @@
+// SPDX-License-Identifier: GPL-2.0
+/*
+ * TI Socs - BBB device-tree source
+ *
+ * Copyright (c) 2026 Nhat Tran <nhat.tranminhk2@gmail.com>
+ */
+
+/dts-v1/;
+#include "tisoc.dtsi"
+
+/ {
+	model = "TI Soc BeagleBone Black";
+	compatible = "ti,tisoc-bbb", "ti,tisoc";
+
+	aliases {
+		serial0 = &uart0;
+	};
+
+	memory@80000000 {
+		device_type = "memory";
+		reg = <0x80000000 0x20000000>;
+	};
+
+	chosen {
+		stdout-path = &uart0;
+		bootargs = "earlycon console=ttyS0,115200";
+	};
+};
+
+&uart0 {
+	status = "okay";
+};
